@@ -9,7 +9,7 @@ describe('Electricity API Endpoints', () => {
     });
 // Test Case 2: Specific Province Usage
     it('should return electricity usage for a specific province and year', async () => {
-        const res = await request(app).get('/api/usage/Alberta/2566');
+        const res = await request(app).get('/api/usages/Alberta/2566');
         expect(res.body.message).toBe('Data not found');
     });
 
