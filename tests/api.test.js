@@ -70,13 +70,13 @@ describe('Electricity API Endpoints', () => {
     // Test Case 9: Specific Province Usages (Invalid Name)
     it('should return empty string for non-existent province name', async () => {
         const res = await request(app).get('/api/usages/Invalid_Province/2566');
-        expect(res.body.message).toBe("Data not found");
+        expect(res.body).toBe("Data not found");
     });
 
     // Test Case 10: Specific Province Users (Invalid Year)
     it('should return empty string for invalid year format', async () => {
         const res = await request(app).get('/api/users/Kamphaeng Phet/256');
-        expect(res.body.message).toBe("Data not found");
+        expect(res.body).toBe("Data not found");
     });
 
     // Test Case 11: Invalid Province ID/Name (usage history)
