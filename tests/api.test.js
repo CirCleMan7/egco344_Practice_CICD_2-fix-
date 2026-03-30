@@ -6,7 +6,9 @@ describe('Electricity API Endpoints', () => {
         const res = await request(app).get('/api/usages/totalyear');
         expect(res.status).toBe(200);
         expect(typeof res.body).toBe('object');
-        expect(res.body).toHaveProperty('total_usage'); // สมมติว่ามี field นี้
+        expect(res.body).toHaveProperty('2564'); 
+        expect(res.body).toHaveProperty('2565'); 
+        expect(res.body).toHaveProperty('2566'); 
     });
 
     // Test Case 2: Total users
@@ -14,6 +16,9 @@ describe('Electricity API Endpoints', () => {
         const res = await request(app).get('/api/users/totalyear');
         expect(res.status).toBe(200);
         expect(typeof res.body).toBe('object');
+        expect(res.body).toHaveProperty('2564'); 
+        expect(res.body).toHaveProperty('2565'); 
+        expect(res.body).toHaveProperty('2566'); 
     });
 
     // Test Case 3: Specific Province Usages
@@ -55,25 +60,25 @@ describe('Electricity API Endpoints', () => {
     // Test Case 7: Total Usage (Invalid Path)
     it('should return empty string for incorrect endpoint (totalyears)', async () => {
         const res = await request(app).get('/api/usages/totalyears');
-        expect(res.text).toBe(""); // เช็คว่าเป็น string ว่าง
+        expect(res.text).toBe("{\"message\":\"Data not found\"}"); // เช็คว่าเป็น string ว่าง
     });
 
     // Test Case 8: Total users (Invalid Path)
     it('should return empty string for incorrect endpoint (totalyears)', async () => {
         const res = await request(app).get('/api/users/totalyears');
-        expect(res.text).toBe("");
+        expect(res.text).toBe("{\"message\":\"Data not found\"}");
     });
 
     // Test Case 9: Specific Province Usages (Invalid Name)
     it('should return empty string for non-existent province name', async () => {
         const res = await request(app).get('/api/usages/Invalid_Province/2566');
-        expect(res.text).toBe("");
+        expect(res.text).toBe("{\"message\":\"Data not found\"}");
     });
 
     // Test Case 10: Specific Province Users (Invalid Year)
     it('should return empty string for invalid year format', async () => {
         const res = await request(app).get('/api/users/Kamphaeng Phet/256');
-        expect(res.text).toBe("");
+        expect(res.text).toBe("{\"message\":\"Data not found\"}");
     });
 
     // Test Case 11: Invalid Province ID/Name (usage history)
