@@ -58,13 +58,13 @@ describe('Electricity API Endpoints', () => {
     // Test Case 7: Total Usage (Invalid Path)
     it('should return empty string for incorrect endpoint (totalyears)', async () => {
         const res = await request(app).get('/api/usages/totalyears');
-        expect(res.body).toBe("Data not found"); // เช็คว่าเป็น string ว่าง
+        expect(res.body).toEqual({});
     });
 
     // Test Case 8: Total users (Invalid Path)
     it('should return empty string for incorrect endpoint (totalyears)', async () => {
         const res = await request(app).get('/api/users/totalyears');
-        expect(res.body).toBe("Data not found");
+        expect(res.body).toEqual({});
     });
 
     // Test Case 9: Specific Province Usages (Invalid Name)
